@@ -1,0 +1,29 @@
+# kovanica-devnet — never commit operator secrets or runtime state.
+#
+# Devnet is local-only, but the same secret classes apply: a devnet operator
+# still holds authority keys and a faucet wallet.
+
+# PoA authority signing keys (32-byte Ed25519 seed, mode 0600). The matching
+# `authorities.conf` is PUBLIC and stays tracked.
+authority-keys/*.env
+
+# Runtime state: ledger snapshots, replay logs, peer ban state, faucet ledgers.
+data/
+keys/
+logs/
+seeds/*/data/
+seeds/*/keys/
+*.log
+
+# Any local env/secret, repo-wide.
+.env
+.env.*
+!.env.example
+
+# Editor / OS noise.
+*.backup
+*.bak
+*.swp
+.DS_Store
+__pycache__/
+*.pyc
